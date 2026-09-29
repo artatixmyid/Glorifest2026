@@ -1,0 +1,52 @@
+SHEILA — AUDIT & OPTIMIZATION
+Tanggal: 30 September 2026
+
+CAKUPAN
+- Audit seluruh 5 halaman HTML: index.html, tiket.html, form.html, qris.html, success.html.
+- Audit aset lokal dan seluruh referensi antarhalaman.
+- Validasi sintaks JavaScript executable dengan Node.js.
+- Pemeriksaan komentar, referensi aset lokal yang hilang, dan jalur checkout.
+
+PERBAIKAN INTEGRITAS
+- Menambahkan event-data.js yang sebelumnya direferensikan tetapi tidak tersedia.
+- Menyatukan konfigurasi event dasar untuk halaman form/qris/success tanpa mengubah key storage checkout.
+- Memastikan referensi lokal seluruh HTML menunjuk ke file yang tersedia.
+- Menormalkan banner.png dan qris.png yang ternyata berformat JPEG menjadi banner.jpg dan qris.jpg, lalu memperbarui seluruh referensi.
+- Mempertahankan alur: index -> tiket -> form -> qris -> success.
+- Mempertahankan key localStorage/sessionStorage dan endpoint yang digunakan aplikasi.
+- Menghapus placeholder href="#" yang tidak memiliki tujuan navigasi.
+
+PEMBERSIHAN KODE
+- Menghapus komentar HTML, CSS, dan JavaScript dari seluruh HTML.
+- Menghapus penamaan wrapper fungsi barcode yang tidak diperlukan tanpa mengubah eksekusinya.
+- Menambahkan layer CSS terpusat enhancements.css untuk mengurangi pengulangan perubahan visual dan menjaga konsistensi.
+
+OPTIMASI VISUAL & UX
+- Background visual yang lebih modern dan ringan.
+- Focus state keyboard yang lebih jelas.
+- Hover/tap feedback yang konsisten.
+- Styling input focus yang lebih terarah.
+- Shadow/card treatment yang lebih konsisten.
+- Respect prefers-reduced-motion.
+- Preload aset banner/QR untuk halaman yang relevan.
+
+VALIDASI
+- HTML dapat diparse.
+- Tidak ditemukan referensi aset lokal yang hilang.
+- JavaScript executable: 0 syntax errors.
+- Tidak ditemukan komentar HTML/CSS/JS tersisa.
+
+
+FINAL QRIS STABILIZATION — 30 September 2026
+- Consolidated duplicated QRIS stylesheet overrides into one authoritative CSS block.
+- Removed the QR image hidden-until-load behavior that could leave the QR area visually blank during delayed image events.
+- Corrected qris.jpg HTML intrinsic dimensions from 461x475 to the actual 564x568 asset ratio.
+- Added defensive min-width, wrapping, overflow, and mobile sizing rules for QRIS/order/amount/upload components.
+- Preserved the existing checkout flow, localStorage keys, EmailJS endpoint/configuration, payment proof validation, timer, and 3-minute processing redirect.
+
+
+FINAL VALIDATION
+- JSON-LD <script type="application/ld+json"> blocks were excluded from JavaScript syntax validation because they contain structured data, not executable JavaScript.
+- Executable JavaScript syntax errors after this distinction: 0.
+- Missing local asset references: 0.
+- qris.html CSS blocks: 1.
