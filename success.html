@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>E-Tiket | Artatix</title>
+<meta name="theme-color" content="#17256f">
+<meta name="color-scheme" content="light">
+<meta name="format-detection" content="telephone=no">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex">
+<meta name="description" content="E-tiket resmi GLORIFEST FESTARIA 2026 — pembayaran terverifikasi di Artatix.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="E-Tiket | Artatix">
+<meta property="og:description" content="Pembayaran terverifikasi — e-tiket resmimu sudah diterbitkan.">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#17256f;--navy-2:#263da5;--blue:#5366f2;--blue-dark:#3f51d8;--blue2:#8b96ff;
+  --ink:#121936;--muted:#7f89a6;--soft:#64708c;--panel:#eef2ff;--line:#dfe5f5;
+  --red:#e5484d;--green:#0b9d55;--green-bg:#e9fbf1;--hot:#d92638;--hot2:#ff7a18;
+  --gold:#ffb11b;--violet:#8b5cf6;--cyan:#55e7ff;
+  --shadow:0 24px 70px rgba(24,36,102,.14)
+}
+*{margin:0;padding:0;box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Poppins',system-ui,sans-serif;min-height:100vh;color:var(--ink);
+  background:radial-gradient(900px 420px at 50% -160px,rgba(83,102,242,.18),transparent 70%),
+  radial-gradient(circle at 100% 20%,rgba(11,189,99,.06),transparent 26%),
+  linear-gradient(180deg,#f8faff 0,#fff 34%,#fff 100%);
+  -webkit-tap-highlight-color:transparent}
+::selection{background:#dfe5fb}
+:focus-visible{outline:3px solid rgba(67,83,224,.35);outline-offset:2px;border-radius:6px}
+img{display:block}
+button{font-family:inherit;cursor:pointer}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.page{max-width:520px;margin:0 auto;padding:0 20px}
+
+
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:70;overflow:hidden}
+#confetti i{position:absolute;top:-16px;width:9px;height:14px;opacity:.95;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(106vh) rotate(560deg);opacity:.5}}
+
+
+.topbar{position:sticky;top:0;z-index:40;margin:0 -20px;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(224,229,243,.8)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:40px;height:40px;flex:none;border-radius:10px;box-shadow:0 8px 20px rgba(30,52,143,.18);transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.brand:hover .logo-mark{transform:rotate(-6deg) scale(1.06)}
+.brand strong{font-size:25px;font-weight:800;color:var(--navy);letter-spacing:-.8px}
+.lang{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,#f7f9ff,#eef2ff);border:1px solid #e0e6f6;border-radius:999px;padding:9px 15px;font-weight:700;font-size:14px;color:var(--navy);box-shadow:0 8px 22px rgba(23,37,111,.08);transition:transform .12s}
+.lang:active{transform:scale(.95)}
+.flag{width:20px;height:20px;border-radius:50%;background:linear-gradient(180deg,#f0483e 0 50%,#fff 50% 100%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);flex:none}
+.flag--en{background:
+ linear-gradient(45deg,transparent 45%,#fff 45% 55%,transparent 55%),
+ linear-gradient(135deg,transparent 45%,#fff 45% 55%,transparent 55%),
+ linear-gradient(0deg,transparent 41%,#fff 41% 59%,transparent 59%),
+ linear-gradient(90deg,transparent 41%,#fff 41% 59%,transparent 59%),#26339B;
+ box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+
+
+.progress{position:relative;overflow:hidden;margin:0 -20px;padding:14px 20px 12px;
+  background:linear-gradient(135deg,#111d59,#263da5 58%,#5366f2);box-shadow:0 12px 30px rgba(23,37,111,.18)}
+.progress::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:sheenLine 4.5s linear infinite;pointer-events:none}
+@keyframes sheenLine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.progress-track{height:4px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden;margin-bottom:12px}
+.progress-fill{height:100%;background:#fff;border-radius:99px;width:100%;box-shadow:0 0 12px rgba(255,255,255,.7)}
+.steps{list-style:none;display:flex;align-items:center;gap:6px}
+.step{display:flex;align-items:center;gap:8px;flex:none;min-width:0}
+.s-dot{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:13px;color:rgba(255,255,255,.85);border:2px solid rgba(255,255,255,.45);flex:none}
+.step.done .s-dot{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.5);color:#fff}
+.step.active .s-dot{background:#fff;color:var(--navy);border-color:#fff;box-shadow:0 0 0 5px rgba(255,255,255,.18)}
+.s-label{color:rgba(255,255,255,.55);font-weight:600;font-size:12.5px;white-space:nowrap}
+.step.active .s-label{color:#fff;font-weight:700;font-size:14px}
+.s-sep{display:flex;justify-content:center;flex:1;min-width:10px}
+.s-sep svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+@media(max-width:480px){
+ .step:not(.active) .s-label{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+ .s-dot{width:27px;height:27px;font-size:12px}
+}
+
+
+.ticker{position:relative;overflow:hidden;margin-top:18px;border-radius:18px;background:linear-gradient(90deg,#0a8f4e,#22d67f,#0a8f4e);background-size:220% 100%;box-shadow:0 14px 34px rgba(14,159,86,.28),inset 0 0 0 1px rgba(255,255,255,.3);animation:rise .55s cubic-bezier(.2,.7,.3,1) backwards,tickerBg 6s linear infinite}
+.ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:34px;z-index:2;pointer-events:none}
+.ticker::before{left:0;background:linear-gradient(90deg,rgba(10,143,78,.95),transparent)}
+.ticker::after{right:0;background:linear-gradient(-90deg,rgba(10,143,78,.95),transparent)}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-track{display:flex;width:max-content;padding:10px 0;will-change:transform;animation:tickerMove 15s linear infinite}
+.t-group{display:flex;align-items:center;flex:none}
+.t-item{display:inline-flex;align-items:center;gap:8px;padding:0 22px;color:#fff;font-size:13.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.18)}
+@keyframes tickerMove{to{transform:translateX(-50%)}}
+@keyframes tickerBg{to{background-position:220% 0}}
+
+
+.checkout-content{padding-bottom:60px}
+.section-heading{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#6577ff,#4353e0 62%,#3343c9);color:#fff;font-size:16px;font-weight:800;padding:12px 20px;border-radius:999px;margin:24px 0 16px;box-shadow:0 12px 26px rgba(67,83,224,.30),inset 0 1px 0 rgba(255,255,255,.28)}
+.section-heading::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);animation:headingShine 3.5s ease-in-out infinite}
+@keyframes headingShine{55%,100%{transform:translateX(100%)}}
+.section-heading svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+
+.hero{background:rgba(255,255,255,.9);border:1px solid rgba(224,229,243,.9);border-radius:22px;padding:26px 20px 22px;text-align:center;margin-top:16px;box-shadow:var(--shadow);animation:rise .5s cubic-bezier(.2,.7,.3,1) backwards;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-70px;right:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(11,189,99,.12),transparent 70%)}
+.hero-check{width:70px;height:70px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(145deg,#22d67f,#0a8f4e);display:grid;place-items:center;box-shadow:0 14px 30px rgba(14,159,86,.35);animation:pop .5s cubic-bezier(.2,.9,.3,1.4) backwards .1s}
+.hero-check svg{width:34px;height:34px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+@keyframes pop{from{transform:scale(0)}}
+.hero h2{font-size:21px;font-weight:800;color:var(--navy);letter-spacing:-.3px}
+.hero p{margin-top:8px;font-size:13.5px;line-height:1.7;color:var(--soft)}
+.hero p strong{color:var(--ink)}
+
+
+.ticket{margin-top:18px;border-radius:24px;overflow:hidden;box-shadow:0 26px 60px rgba(22,37,95,.28);animation:rise .5s cubic-bezier(.2,.7,.3,1) backwards .08s;position:relative}
+.ticket-head{position:relative;overflow:hidden;background:linear-gradient(150deg,#16255f 0%,#1c2a7a 40%,#3a4bd6 100%);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ticket-head::before{content:"";position:absolute;top:-70px;right:-50px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.07)}
+.ticket-badge{position:relative;display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;letter-spacing:.16em;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:7px 14px}
+.ticket-badge svg{width:13px;height:13px;fill:var(--gold)}
+.ticket-brand{position:relative;display:flex;align-items:center;gap:8px;font-weight:800;font-size:15px}
+.ticket-brand .logo-mark{width:28px;height:28px;border-radius:8px}
+.ticket-body{position:relative;background:rgba(255,255,255,.96);padding:20px 20px 18px}
+.ticket-event{font-size:16.5px;font-weight:800;color:var(--navy);letter-spacing:-.2px;text-align:center}
+.code-zone{margin-top:14px;text-align:center}
+.code-label{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.code-row{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:5px}
+.ticket-code{font-size:clamp(18px,5vw,23px);font-weight:800;letter-spacing:.12em;color:var(--ink);font-variant-numeric:tabular-nums;word-break:break-all}
+.chip-copy{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:0;background:var(--blue);color:#fff;border-radius:9px;flex:none;transition:transform .15s,background .2s}
+.chip-copy:active{transform:scale(.9)}
+.chip-copy svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.chip-copy.copied{background:var(--green);box-shadow:0 4px 12px rgba(14,159,86,.35)}
+.barcode-wrap{margin:16px auto 2px;display:grid;place-items:center;gap:5px}
+.barcode{width:240px;max-width:82%;height:52px;color:var(--ink)}
+.barcode-wrap small{font-size:10px;letter-spacing:.28em;color:var(--muted);font-weight:600;text-transform:uppercase}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.meta{background:#f7f9ff;border:1px solid #edf0f8;border-radius:14px;padding:11px 13px}
+.meta.wide{grid-column:1/-1}
+.meta span{display:block;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.meta strong{display:block;font-size:13.5px;font-weight:700;margin-top:3px;word-break:break-word;font-variant-numeric:tabular-nums}
+.meta.total strong{color:var(--navy);font-size:17px}
+.cut{position:relative;border-top:2px dashed #d7ddf0;margin:16px -20px}
+.notch{position:absolute;top:-11px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:inset 0 2px 4px rgba(20,27,61,.05)}
+.notch.l{left:-11px}
+.notch.r{right:-11px}
+.ticket-foot{background:linear-gradient(145deg,#eafaf1,#e2f7ea);padding:13px 20px;display:flex;align-items:center;gap:12px;text-align:left}
+.ticket-foot svg{width:20px;height:20px;flex:none;fill:none;stroke:var(--green);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ticket-foot strong{display:block;font-size:13px;color:var(--ink)}
+.ticket-foot span{display:block;font-size:11.5px;color:var(--soft);font-weight:600;margin-top:2px}
+
+
+.count-card{margin-top:18px;background:rgba(255,255,255,.9);border:1px solid rgba(224,229,243,.9);border-radius:22px;padding:18px 16px;text-align:center;box-shadow:var(--shadow);animation:rise .5s cubic-bezier(.2,.7,.3,1) backwards .14s}
+.count-title{font-size:13px;font-weight:700;color:var(--navy);letter-spacing:.04em}
+.count-row{display:flex;justify-content:center;gap:10px;margin-top:12px}
+.count-cell{min-width:72px;background:linear-gradient(150deg,#f2f4ff,#e9edff);border:1px solid #e0e6f6;border-radius:16px;padding:12px 8px}
+.count-cell strong{display:block;font-size:26px;font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1.1}
+.count-cell span{display:block;margin-top:3px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+
+.holders{margin-top:18px;background:rgba(255,255,255,.9);border:1px solid rgba(224,229,243,.9);border-radius:22px;padding:16px;box-shadow:var(--shadow);animation:rise .5s cubic-bezier(.2,.7,.3,1) backwards .2s}
+.holders-title{font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:10px}
+.holder-row{display:flex;align-items:center;gap:12px;padding:10px 2px;border-bottom:1px dashed #e3e8f5}
+.holder-row:last-child{border-bottom:0}
+.holder-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#17256f,#5366f2);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;flex:none;box-shadow:0 6px 14px rgba(30,52,143,.2)}
+.holder-row strong{display:block;font-size:14px;color:var(--ink)}
+.holder-row small{display:block;font-size:11.5px;color:var(--muted);font-weight:600;margin-top:1px}
+
+
+.actions{display:grid;gap:10px;margin-top:18px;animation:rise .5s cubic-bezier(.2,.7,.3,1) backwards .26s}
+.btn{position:relative;overflow:hidden;width:100%;min-height:56px;border:0;border-radius:16px;padding:15px;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .15s,box-shadow .2s;touch-action:manipulation;-webkit-user-select:none;user-select:none;text-decoration:none}
+.btn svg{position:relative;z-index:1;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.btn span{position:relative;z-index:1}
+.btn-primary{color:#fff;background:linear-gradient(135deg,#6577ff 0,#4353e0 52%,#3343c9 100%);box-shadow:0 14px 34px rgba(67,83,224,.34),inset 0 1px 0 rgba(255,255,255,.30)}
+.btn-primary::before{content:"";position:absolute;inset:0;transform:translateX(-120%) skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.24),transparent);animation:buttonShine 3.8s ease-in-out infinite}
+@keyframes buttonShine{0%,58%{transform:translateX(-120%) skewX(-18deg)}100%{transform:translateX(120%) skewX(-18deg)}}
+.btn-wa{color:#fff;background:linear-gradient(135deg,#28e17a,#0bbf63);box-shadow:0 12px 28px rgba(14,159,86,.32)}
+.btn-ghost{color:var(--blue);background:#fff;border:2px solid #dde3f6}
+.btn:not(.btn-primary):not(.btn-wa):hover{border-color:var(--blue)}
+.btn:active{transform:scale(.98)}
+
+.info-box{display:flex;gap:10px;background:#f7f9ff;border:1px solid var(--line);border-radius:14px;padding:13px 14px;font-size:12px;line-height:1.65;color:var(--soft);margin-top:16px;animation:rise .5s cubic-bezier(.2,.7,.3,1) backwards .3s}
+.info-box svg{width:16px;height:16px;flex:none;fill:none;stroke:var(--blue);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+
+
+.footer{margin-top:44px;text-align:center;padding-bottom:14px}
+.f-brand{display:flex;align-items:center;justify-content:center;gap:11px;margin-bottom:16px}
+.f-brand .logo-mark{width:46px;height:46px;border-radius:13px}
+.f-brand span{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:-.8px}
+.f-help{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:14px}
+.f-contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:460px;margin:0 auto}
+.f-contact a{min-height:64px;display:flex;align-items:center;justify-content:flex-start;gap:12px;padding:10px 14px;border:1px solid rgba(224,229,243,.95);border-radius:18px;text-decoration:none;color:var(--ink);font-weight:700;font-size:14px;background:linear-gradient(145deg,#fff,#f7f9ff);box-shadow:0 9px 24px rgba(30,47,105,.07),inset 0 1px 0 rgba(255,255,255,.9);transition:transform .18s,box-shadow .18s,border-color .18s}
+.f-contact a:hover{transform:translateY(-2px);border-color:rgba(67,83,224,.3);box-shadow:0 13px 30px rgba(30,47,105,.12)}
+.f-ico{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;flex:none;color:#fff;box-shadow:0 7px 16px rgba(20,35,90,.15)}
+.f-ico.wa{background:linear-gradient(145deg,#28e17a,#0bbf63)}
+.f-ico.mail{background:linear-gradient(145deg,#6678ff,#4353e0)}
+.f-ico svg{width:20px;height:20px}
+.f-copyline{display:flex;flex-direction:column;align-items:flex-start;min-width:0;text-align:left;line-height:1.25}
+.f-copyline small{margin-top:3px;font-size:11px;font-weight:650;color:var(--muted)}
+.f-copyline strong{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.f-sep{border:0;border-top:1px solid #e7eaf3;margin:28px 0 16px}
+.f-copy{font-size:13px;color:var(--muted);font-weight:550}
+@media (max-width:480px){.f-contact{grid-template-columns:1fr;max-width:340px}}
+
+
+.toast{position:fixed;left:50%;bottom:40px;transform:translate(-50%,14px) scale(.97);z-index:90;background:#1c2440;color:#fff;font-size:14px;font-weight:500;padding:11px 18px;border-radius:12px;max-width:calc(100vw - 40px);text-align:center;opacity:0;pointer-events:none;box-shadow:0 12px 30px rgba(0,0,0,.28);transition:opacity .25s,transform .25s;backdrop-filter:blur(10px)}
+.toast.show{opacity:1;transform:translate(-50%,0) scale(1)}
+
+
+@media print{
+  body{background:#fff}
+  .topbar,.progress,.ticker,.actions,.info-box,.count-card,.holders,.footer,.section-heading,#confetti,.toast,.hero{display:none!important}
+  .page{max-width:100%;padding:0}
+  .ticket{box-shadow:none;border:1px solid #d7ddf0;margin-top:0}
+}
+
+@media (max-width:430px){.brand strong{font-size:22px}.meta-grid{grid-template-columns:1fr}.t-item{padding:0 14px;font-size:12px}.count-cell{min-width:64px}.count-cell strong{font-size:22px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}#confetti{display:none}}
+</style>
+  <link rel="stylesheet" href="enhancements.css">
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gMark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8B96FF"/><stop offset=".5" stop-color="#4A54B1"/><stop offset="1" stop-color="#262C7E"/>
+    </linearGradient>
+    <linearGradient id="gShine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <symbol id="logoMark" viewBox="0 0 40 40">
+      <rect x="1.5" y="1.5" width="37" height="37" rx="11.5" fill="url(#gMark)"/>
+      <rect x="1.5" y="1.5" width="37" height="37" rx="11.5" fill="url(#gShine)"/>
+      <path d="M28.5 10v20" stroke="rgba(255,255,255,.38)" stroke-width="2" stroke-dasharray="2.6 3.4" stroke-linecap="round"/>
+      <path d="M11.5 28.5 19 10.5l7.5 18" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M14.7 22.4h8.6" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div id="confetti" aria-hidden="true"></div>
+
+<div class="page">
+<header class="topbar">
+  <a class="brand" href="index.html" aria-label="Artatix beranda">
+    <img class="logo-mark" src="logo.png" alt="Artatix">
+    <strong>Artatix</strong>
+  </a>
+  <button class="lang" id="langBtn" type="button" aria-label="Ganti bahasa">
+    <span class="flag" id="langFlag" aria-hidden="true"></span><span id="langCode">ID</span>
+  </button>
+</header>
+
+<nav class="progress" aria-label="Langkah pemesanan">
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <ol class="steps">
+    <li class="step done"><span class="s-dot">✓</span><span class="s-label" data-step="0">Pilih Kategori</span></li>
+    <li class="s-sep" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></li>
+    <li class="step done"><span class="s-dot">✓</span><span class="s-label" data-step="1">Data Pembeli</span></li>
+    <li class="s-sep" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></li>
+    <li class="step done"><span class="s-dot">✓</span><span class="s-label" data-step="2">Pembayaran</span></li>
+    <li class="s-sep" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></li>
+    <li class="step active" aria-current="step"><span class="s-dot">4</span><span class="s-label" data-step="3">E-Tiket</span></li>
+  </ol>
+</nav>
+
+<aside class="ticker" aria-label="Status pesanan">
+  <p class="sr-only" id="tickerSr">Pembayaran berhasil. E-tiket resmimu sudah diterbitkan.</p>
+  <div class="ticker-track" aria-hidden="true">
+    <div class="t-group">
+      <span class="t-item"><span data-tick="0">✅ PEMBAYARAN BERHASIL</span></span>
+      <span class="t-item"><span data-tick="1">🎟 E-TIKET DITERBITKAN</span></span>
+      <span class="t-item"><span data-tick="2">🔥 SEE YOU AT GLORIFEST</span></span>
+    </div>
+    <div class="t-group">
+      <span class="t-item"><span data-tick="0">✅ PEMBAYARAN BERHASIL</span></span>
+      <span class="t-item"><span data-tick="1">🎟 E-TIKET DITERBITKAN</span></span>
+      <span class="t-item"><span data-tick="2">🔥 SEE YOU AT GLORIFEST</span></span>
+    </div>
+  </div>
+</aside>
+
+<main class="checkout-content">
+  <h1 class="section-heading"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5A1.5 1.5 0 0 1 5.5 6h13A1.5 1.5 0 0 1 20 7.5v2.2a2.3 2.3 0 0 0 0 4.6v2.2a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 16.5v-2.2a2.3 2.3 0 0 0 0-4.6Z"/><path d="M14 6v12" stroke-dasharray="2.5 2.5"/></svg><span data-i18n="heading">E-Tiket Resmi</span></h1>
+
+  <section class="hero">
+    <div class="hero-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+    <h2 data-i18n="heroTitle">Pembayaran Terverifikasi!</h2>
+    <p><span data-i18n="heroPre">Halo</span> <strong id="heroName">-</strong><span data-i18n="heroPost">, pembayaranmu telah kami terima dan e-tiket resmimu sudah diterbitkan.</span></p>
+  </section>
+
+
+  <section class="ticket" id="ticketCard" aria-label="E-Tiket">
+    <div class="ticket-head">
+      <span class="ticket-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 5.9 6.1 2.3-6.1 2.3L12 18.4 9.6 12.5 3.5 10.2l6.1-2.3Z"/></svg><span data-i18n="tBadge">E-TIKET RESMI</span></span>
+      <span class="ticket-brand"><img class="logo-mark" src="logo.png" alt="Artatix">Artatix</span>
+    </div>
+    <div class="ticket-body">
+      <div class="ticket-event">GLORIFEST "FESTARIA 2026"</div>
+      <div class="code-zone">
+        <div class="code-label" data-i18n="lblKode">Kode E-Tiket</div>
+        <div class="code-row">
+          <span class="ticket-code" id="kodeTiket">-</span>
+          <button class="chip-copy" id="copyKode" type="button" aria-label="Salin kode e-tiket"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+      </div>
+      <div class="barcode-wrap">
+        <svg class="barcode" id="barcode" preserveAspectRatio="none" role="img" aria-label="Barcode kode e-tiket"></svg>
+        <small id="barcodeLabel">GLORIFEST · FESTARIA · 2026</small>
+      </div>
+      <div class="meta-grid">
+        <div class="meta wide"><span>Order ID</span><strong id="mOrderId">-</strong></div>
+        <div class="meta wide"><span data-i18n="lblKategori">Kategori</span><strong id="mKategori">-</strong></div>
+        <div class="meta"><span data-i18n="lblJumlah">Jumlah Tiket</span><strong id="mJumlah">0</strong></div>
+        <div class="meta"><span data-i18n="lblTrans">No. Transaksi</span><strong id="mTrans">-</strong></div>
+        <div class="meta total wide"><span data-i18n="lblTotal">Total Dibayar</span><strong id="mTotal">Rp0</strong></div>
+      </div>
+      <div class="cut"><span class="notch l" aria-hidden="true"></span><span class="notch r" aria-hidden="true"></span></div>
+      <div class="ticket-foot">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 1 1 14 0c0 5.4-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        <div>
+          <strong>10 Oktober 2026 · 15:00 – 23:00 WIB</strong>
+          <span>SMA Global Mandiri Cibubur, Kota Bogor, Jawa Barat</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="count-card" aria-label="Hitung mundur menuju acara">
+    <div class="count-title" data-i18n="cdTitle">⏳ Menuju GLORIFEST FESTARIA 2026</div>
+    <div class="count-row" id="countRow">
+      <div class="count-cell"><strong id="cdD">0</strong><span data-i18n="cdD">Hari</span></div>
+      <div class="count-cell"><strong id="cdH">00</strong><span data-i18n="cdH">Jam</span></div>
+      <div class="count-cell"><strong id="cdM">00</strong><span data-i18n="cdM">Menit</span></div>
+      <div class="count-cell"><strong id="cdS">00</strong><span data-i18n="cdS">Detik</span></div>
+    </div>
+    <p class="count-title" id="cdDone" hidden data-i18n="cdDone">🎉 Acara telah berlangsung. Sampai jumpa di venue!</p>
+  </section>
+
+
+  <section class="holders" aria-labelledby="holdersH">
+    <div class="holders-title" id="holdersH" data-i18n="holdersTitle">Pemegang Tiket</div>
+    <div id="holderRows"></div>
+  </section>
+
+
+  <div class="actions">
+    <button class="btn btn-primary" id="btnPrint" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg><span data-i18n="btnPrint">Simpan / Cetak E-Tiket</span></button>
+    <a class="btn btn-wa" id="btnWa" href="https://wa.me/6282137676220" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.6-3.9A8 8 0 1 1 20 11.5Z"/><path d="M8.4 8.1c.2-.4.5-.4.8-.3l1 .8c.2.2.3.4.1.7l-.5.7c.4.8 1 1.4 1.8 1.8l.7-.5c.2-.2.5-.1.7.1l.8 1c.2.3.1.6-.3.8-.5.3-1.1.4-1.7.2-2.4-.7-4.3-2.6-5-5-.2-.6-.1-1.2.2-1.7Z"/></svg><span data-i18n="btnWa">Hubungi CS via WhatsApp</span></a>
+    <button class="btn btn-ghost" id="btnHome" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10.5 9-7.5 9 7.5"/><path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/></svg><span data-i18n="btnHome">Kembali ke Beranda</span></button>
+  </div>
+
+  <div class="info-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v.01M12 11v5"/></svg><div data-i18n="infoText">Tunjukkan e-tiket ini beserta kartu identitas asli yang sesuai dengan nama pemegang tiket saat masuk venue. Simpan juga bukti ini di perangkatmu lewat tombol Simpan / Cetak.</div></div>
+
+  <footer class="footer">
+    <div class="f-brand">
+      <img class="logo-mark" src="logo.png" alt="Artatix">
+      <span>Artatix</span>
+    </div>
+    <p class="f-help" data-i18n="needHelp">Butuh bantuan? Hubungi kami:</p>
+    <div class="f-contact">
+      <a href="https://wa.me/6282137676220" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp Artatix">
+        <span class="f-ico wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.6-3.9A8 8 0 1 1 20 11.5Z"/><path d="M8.4 8.1c.2-.4.5-.4.8-.3l1 .8c.2.2.3.4.1.7l-.5.7c.4.8 1 1.4 1.8 1.8l.7-.5c.2-.2.5-.1.7.1l.8 1c.2.3.1.6-.3.8-.5.3-1.1.4-1.7.2-2.4-.7-4.3-2.6-5-5-.2-.6-.1-1.2.2-1.7Z"/></svg></span>
+        <span class="f-copyline"><strong>WhatsApp</strong><small data-i18n="fWaSub">Chat Customer Service</small></span>
+      </a>
+      <a href="mailto:cs@artatix.co.id" aria-label="Kirim email ke Customer Service Artatix">
+        <span class="f-ico mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+        <span class="f-copyline"><strong data-i18n="fEmailTitle">E-mail</strong><small>cs@artatix.co.id</small></span>
+      </a>
+    </div>
+    <hr class="f-sep">
+    <p class="f-copy" data-i18n="copy">© 2026 Artatix. Hak Cipta Dilindungi.</p>
+  </footer>
+</main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<noscript><p style="padding:16px;text-align:center;color:#66718d">JavaScript diperlukan untuk menampilkan e-tiket.</p></noscript>
+
+
+<script src="event-data.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $  = id => document.getElementById(id);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+
+
+  const I18N = {
+    id: {
+      title: 'E-Tiket | Artatix',
+      steps: ['Pilih Kategori','Data Pembeli','Pembayaran','E-Tiket'],
+      heading: 'E-Tiket Resmi',
+      heroTitle: 'Pembayaran Terverifikasi!',
+      heroPre: 'Halo', heroPost: ', pembayaranmu telah kami terima dan e-tiket resmimu sudah diterbitkan.',
+      tBadge: 'E-TIKET RESMI',
+      lblKode: 'Kode E-Tiket', lblKategori: 'Kategori', lblJumlah: 'Jumlah Tiket',
+      lblTrans: 'No. Transaksi', lblTotal: 'Total Dibayar',
+      cdTitle: '⏳ Menuju GLORIFEST FESTARIA 2026',
+      cdD: 'Hari', cdH: 'Jam', cdM: 'Menit', cdS: 'Detik',
+      cdDone: '🎉 Acara telah berlangsung. Sampai jumpa di venue!',
+      holdersTitle: 'Pemegang Tiket',
+      infoText: 'Tunjukkan e-tiket ini beserta kartu identitas asli yang sesuai dengan nama pemegang tiket saat masuk venue. Simpan juga bukti ini di perangkatmu lewat tombol Simpan / Cetak.',
+      btnPrint: 'Simpan / Cetak E-Tiket', btnWa: 'Hubungi CS via WhatsApp', btnHome: 'Kembali ke Beranda',
+      needHelp: 'Butuh bantuan? Hubungi kami:', fWaSub: 'Chat Customer Service', fEmailTitle: 'E-mail',
+      copy: '© 2026 Artatix. Hak Cipta Dilindungi.',
+      tCopied: 'Kode e-tiket berhasil disalin', tCopyFail: 'Gagal menyalin. Salin manual ya.',
+      waMsg: o => 'Halo CS Artatix, saya mau konfirmasi pesanan saya. Order ID: ' + o,
+      ticker: ['✅ PEMBAYARAN BERHASIL','🎟 E-TIKET DITERBITKAN','🔥 SEE YOU AT GLORIFEST'],
+      srTicker: 'Pembayaran berhasil. E-tiket resmimu sudah diterbitkan.',
+      langToast: 'Bahasa: Indonesia'
+    },
+    en: {
+      title: 'E-Ticket | Artatix',
+      steps: ['Select Category','Buyer Details','Payment','E-Ticket'],
+      heading: 'Official E-Ticket',
+      heroTitle: 'Payment Verified!',
+      heroPre: 'Hello', heroPost: ', your payment has been received and your official e-ticket has been issued.',
+      tBadge: 'OFFICIAL E-TICKET',
+      lblKode: 'E-Ticket Code', lblKategori: 'Category', lblJumlah: 'Ticket Qty',
+      lblTrans: 'Transaction No.', lblTotal: 'Total Paid',
+      cdTitle: '⏳ Counting down to GLORIFEST FESTARIA 2026',
+      cdD: 'Days', cdH: 'Hours', cdM: 'Min', cdS: 'Sec',
+      cdDone: '🎉 The event has taken place. See you at the venue!',
+      holdersTitle: 'Ticket Holders',
+      infoText: 'Show this e-ticket along with a valid original ID matching the ticket holder name at the venue entrance. Save a copy on your device via the Save / Print button.',
+      btnPrint: 'Save / Print E-Ticket', btnWa: 'Contact CS via WhatsApp', btnHome: 'Back to Home',
+      needHelp: 'Need help? Contact us:', fWaSub: 'Customer Service Chat', fEmailTitle: 'E-mail',
+      copy: '© 2026 Artatix. All Rights Reserved.',
+      tCopied: 'E-ticket code copied successfully', tCopyFail: 'Failed to copy. Please copy manually.',
+      waMsg: o => 'Hello Artatix CS, I would like to confirm my order. Order ID: ' + o,
+      ticker: ['✅ PAYMENT SUCCESSFUL','🎟 E-TICKET ISSUED','🔥 SEE YOU AT GLORIFEST'],
+      srTicker: 'Payment successful. Your official e-ticket has been issued.',
+      langToast: 'Language: English'
+    }
+  };
+  const LANG_KEY = 'gf_lang';
+  let LANG = 'id';
+  try { if (localStorage.getItem(LANG_KEY) === 'en') LANG = 'en'; } catch (e) {}
+  const T = () => I18N[LANG];
+
+
+  const KEY = { order: 'gf_order_v1', orderId: 'gf_order_id', payment: 'gf_payment_v1', ticket: 'gf_ticket_v1' };
+  let order = null, payment = null;
+  try { order = JSON.parse(localStorage.getItem(KEY.order) || 'null'); } catch (e) {}
+  try { payment = JSON.parse(localStorage.getItem(KEY.payment) || 'null'); } catch (e) {}
+
+  if (!order || !order.cart || !Array.isArray(order.cart.items) || !order.cart.items.length) {
+    location.replace('tiket.html'); return;
+  }
+  const orderId = localStorage.getItem(KEY.orderId) || ('GF-' + Date.now().toString(36).toUpperCase());
+  if (!payment || payment.orderId !== orderId) {
+    location.replace('qris.html'); return;
+  }
+
+  const nf = new Intl.NumberFormat('id-ID');
+  const fmt = n => 'Rp' + nf.format(Number(n) || 0);
+  const reduceMotion = Boolean(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+
+  const hash = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0; return h; };
+  const makeCode = () => {
+    const a = hash(orderId).toString(36).toUpperCase().padStart(7, '0').slice(0, 4);
+    const b = hash(orderId + '|' + (order.nama || '')).toString(36).toUpperCase().padStart(7, '0').slice(0, 4);
+    return 'GLF-' + a + '-' + b;
+  };
+  let ticket = null;
+  try { ticket = JSON.parse(localStorage.getItem(KEY.ticket) || 'null'); } catch (e) {}
+  if (!ticket || ticket.orderId !== orderId || !ticket.kode) {
+    ticket = { orderId, kode: makeCode(), trx: 'TRX-' + orderId.replace(/[^A-Z0-9]/gi, '') };
+    try { localStorage.setItem(KEY.ticket, JSON.stringify(ticket)); } catch (e) {}
+  }
+
+
+  const kategoriTxt = order.cart.items.map(i => i.jenis + ' (x' + i.qty + ')').join(', ');
+  $('heroName').textContent = order.nama || '-';
+  $('mOrderId').textContent = orderId;
+  $('mKategori').textContent = kategoriTxt;
+  $('mJumlah').textContent = order.cart.totalQty;
+  $('mTrans').textContent = ticket.trx;
+  $('mTotal').textContent = fmt(order.cart.totalPrice);
+  $('kodeTiket').textContent = ticket.kode;
+  $('btnWa').href = 'https://wa.me/6282137676220?text=' + encodeURIComponent(T().waMsg(orderId));
+
+
+  (function () {
+    const svg = $('barcode');
+    const clean = ticket.kode.replace(/[^A-Z0-9]/gi, '');
+    let x = 0, rects = '';
+    for (let i = 0; i < clean.length; i++) {
+      const c = clean.charCodeAt(i);
+      const w = (c % 3) + 1;
+      const g = ((c >> 2) % 2) + 1;
+      rects += '<rect x="' + x + '" y="0" width="' + w + '" height="44" rx="0.6"/>';
+      x += w + g;
+    }
+    svg.setAttribute('viewBox', '0 0 ' + x + ' 44');
+    svg.innerHTML = '<g fill="currentColor">' + rects + '</g>';
+  })();
+
+
+  const holderRows = $('holderRows');
+  const renderHolders = () => {
+    holderRows.innerHTML = '';
+    const frag = document.createDocumentFragment();
+    (order.holders || []).forEach(h => {
+      const row = document.createElement('div');
+      row.className = 'holder-row';
+      const num = document.createElement('span');
+      num.className = 'holder-num';
+      num.textContent = String(h.number);
+      const box = document.createElement('div');
+      const nm = document.createElement('strong');
+      nm.textContent = h.nama || '-';
+      const sub = document.createElement('small');
+      sub.textContent = h.ticketName || '';
+      box.append(nm, sub);
+      row.append(num, box);
+      frag.appendChild(row);
+    });
+    holderRows.appendChild(frag);
+  };
+  renderHolders();
+
+
+  const EVENT_AT = new Date('2026-10-10T15:00:00+07:00').getTime();
+  const cdD = $('cdD'), cdH = $('cdH'), cdM = $('cdM'), cdS = $('cdS'), cdDone = $('cdDone'), countRow = $('countRow');
+  const two = n => (n < 10 ? '0' : '') + n;
+  const tickCd = () => {
+    const diff = EVENT_AT - Date.now();
+    if (diff <= 0) { countRow.hidden = true; cdDone.hidden = false; clearInterval(cdInt); return; }
+    cdD.textContent = Math.floor(diff / 86400000);
+    cdH.textContent = two(Math.floor(diff / 3600000) % 24);
+    cdM.textContent = two(Math.floor(diff / 60000) % 60);
+    cdS.textContent = two(Math.floor(diff / 1000) % 60);
+  };
+  tickCd();
+  const cdInt = setInterval(tickCd, 1000);
+
+
+  (function confetti() {
+    if (reduceMotion) return;
+    const colors = ['#5366f2', '#8b5cf6', '#0bbf63', '#ffb11b', '#55e7ff'];
+    const box = $('confetti');
+    for (let i = 0; i < 46; i++) {
+      const p = document.createElement('i');
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.background = colors[i % colors.length];
+      p.style.animationDelay = (Math.random() * 1.2) + 's';
+      p.style.animationDuration = (2.6 + Math.random() * 1.8) + 's';
+      if (Math.random() > .5) p.style.borderRadius = '50%';
+      box.appendChild(p);
+    }
+    setTimeout(() => { box.innerHTML = ''; }, 5600);
+  })();
+
+
+  const toastEl = $('toast');
+  let toastTimer = null;
+  const notify = msg => {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2600);
+  };
+  $('copyKode').addEventListener('click', async () => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(ticket.kode);
+      else {
+        const area = document.createElement('textarea');
+        area.value = ticket.kode;
+        area.setAttribute('readonly', '');
+        area.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      }
+      notify(T().tCopied);
+      const b = $('copyKode');
+      b.classList.add('copied');
+      setTimeout(() => b.classList.remove('copied'), 1400);
+    } catch (e) { notify(T().tCopyFail); }
+  });
+
+
+  $('btnPrint').addEventListener('click', () => window.print());
+  $('btnHome').addEventListener('click', () => {
+
+    try {
+      localStorage.removeItem('gf_checkout_items_v1');
+      localStorage.removeItem('gf_draft_v1');
+      localStorage.removeItem('gf_payment_deadline');
+    } catch (e) {}
+    location.assign('index.html');
+  });
+
+
+  function applyLang(lang, silent) {
+    LANG = I18N[lang] ? lang : 'id';
+    document.documentElement.lang = LANG;
+    try { localStorage.setItem(LANG_KEY, LANG); } catch (e) {}
+    document.title = T().title;
+    $$('.s-label').forEach(el => { const i = +el.dataset.step; if (T().steps[i]) el.textContent = T().steps[i]; });
+    $$('[data-i18n]').forEach(el => { const v = T()[el.dataset.i18n]; if (typeof v === 'string') el.textContent = v; });
+    $$('[data-tick]').forEach((el, i) => { el.textContent = T().ticker[i % 3]; });
+    const sr = $('tickerSr'); if (sr) sr.textContent = T().srTicker;
+    $('btnWa').href = 'https://wa.me/6282137676220?text=' + encodeURIComponent(T().waMsg(orderId));
+    $('barcodeLabel').textContent = LANG === 'en' ? 'GLORIFEST · FESTARIA · 2026' : 'GLORIFEST · FESTARIA · 2026';
+    langFlag.classList.toggle('flag--en', LANG === 'en');
+    langCode.textContent = LANG.toUpperCase();
+    langBtn.setAttribute('aria-label', LANG === 'en' ? 'Switch to Indonesian' : 'Ganti ke English');
+    if (!silent) toast(T().langToast);
+  }
+  const langBtn = $('langBtn'), langFlag = $('langFlag'), langCode = $('langCode');
+  langBtn.addEventListener('click', () => applyLang(LANG === 'id' ? 'en' : 'id'));
+
+  applyLang(LANG, true);
+})();
+</script>
+</body>
+</html>
